@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/GameWord.module.css";
 
+import Timer from "./Timer";
+
 export default function GameWord() {
   const [inputWord, setInputWord] = useState("");
   const target: string = "type game";
@@ -22,6 +24,7 @@ export default function GameWord() {
 
   return (
     <div>
+      <Timer />
       <p className={match ? styles.match : styles.noMatch}>{target}</p>
       <input type="text" value={inputWord} onChange={handleInput} />
       {match ? (
