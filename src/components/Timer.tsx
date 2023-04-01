@@ -5,14 +5,14 @@ interface TimerProps {
 }
 
 const Timer: FC<TimerProps> = ({ complete }): JSX.Element => {
-  const [seconds, setSeconds] = useState<number>(0);
+  const [time, setTime] = useState<number>(0);
 
   useEffect(() => {
     const intervalId: NodeJS.Timeout = setInterval(() => {
       if (!complete) {
-        setSeconds((prevSeconds: number) => prevSeconds + 1);
+        setTime((prevTime: number) => prevTime + 0.01);
       }
-    }, 1000);
+    }, 10);
 
     return () => {
       clearInterval(intervalId);
@@ -21,7 +21,7 @@ const Timer: FC<TimerProps> = ({ complete }): JSX.Element => {
 
   return (
     <div>
-      <h1>{seconds}</h1>
+      <h1>{time.toFixed(2)}</h1>
     </div>
   );
 };
