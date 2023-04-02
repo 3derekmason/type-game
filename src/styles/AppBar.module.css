@@ -1,11 +1,18 @@
 .appBar {
   width: 100vw;
   height: 80px;
-  background: var(--primary-main);
+  background: linear-gradient(var(--primary-main), 70%, transparent);
   color: #fefefe;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 32px;
   padding-right: 32px;
+}
+
+.appBar nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
