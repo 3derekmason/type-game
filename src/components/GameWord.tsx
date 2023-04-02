@@ -17,6 +17,14 @@ export default function GameWord() {
     setInputWord(e.target.value);
   };
 
+  const resetGame = () => {
+    setTypeCount(0);
+    setStartTimer(false);
+    setMatch(false);
+    setComplete(false);
+    setInputWord("");
+  };
+
   useEffect(() => {
     if (inputWord === target) {
       setMatch(true);
@@ -28,6 +36,7 @@ export default function GameWord() {
 
   return (
     <div>
+      <button onClick={resetGame}>RESET</button>
       <Timer start={startTimer} complete={complete} />
       <p className={match ? styles.match : styles.noMatch}>{target}</p>
       <input
