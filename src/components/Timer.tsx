@@ -1,15 +1,16 @@
 import React, { useState, useEffect, FC } from "react";
 
 interface TimerProps {
+  start: boolean;
   complete: boolean;
 }
 
-const Timer: FC<TimerProps> = ({ complete }): JSX.Element => {
+const Timer: FC<TimerProps> = ({ start, complete }): JSX.Element => {
   const [time, setTime] = useState<number>(0);
 
   useEffect(() => {
     const intervalId: NodeJS.Timeout = setInterval(() => {
-      if (!complete) {
+      if (!complete && start) {
         setTime((prevTime: number) => prevTime + 0.01);
       }
     }, 10);
@@ -17,7 +18,7 @@ const Timer: FC<TimerProps> = ({ complete }): JSX.Element => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [complete]);
+  }, [complete, start]);
 
   return (
     <div>

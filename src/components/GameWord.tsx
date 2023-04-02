@@ -28,8 +28,7 @@ export default function GameWord() {
 
   return (
     <div>
-      {startTimer ? <Timer complete={complete} /> : 0}
-
+      <Timer start={startTimer} complete={complete} />
       <p className={match ? styles.match : styles.noMatch}>{target}</p>
       <input
         type="text"
