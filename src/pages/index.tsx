@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 
+import AppBar from "@/components/AppBar";
 import GameWord from "@/components/GameWord";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <AppBar />
         <GameWord />
       </main>
     </>
