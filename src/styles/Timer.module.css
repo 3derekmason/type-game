@@ -1,0 +1,16 @@
+.timer {
+  width: 148px;
+  height: 56px;
+  display: grid;
+  place-content: center;
+  font-family: var(--font-mono);
+  padding: 8px;
+  background: #212121;
+  color: #fff;
+  border-radius: 12px;
+}
+
+.timer h1 {
+  font-size: 32px;
+  letter-spacing: 4px;
+}

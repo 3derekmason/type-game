@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FC } from "react";
-
+import styles from "../styles/Timer.module.css";
 interface TimerProps {
   start: boolean;
   complete: boolean;
@@ -21,7 +21,7 @@ const Timer: FC<TimerProps> = ({ start, complete }): JSX.Element => {
   }, [complete, start]);
 
   return (
-    <div>
+    <div className={styles.timer}>
       <h1>{time.toFixed(2)}</h1>
     </div>
   );
