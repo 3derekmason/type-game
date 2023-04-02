@@ -35,10 +35,10 @@ export default function GameWord() {
   }, [inputWord]);
 
   return (
-    <div>
+    <div className={styles.game}>
       <button onClick={resetGame}>RESET</button>
       <Timer start={startTimer} complete={complete} />
-      <p className={match ? styles.match : styles.noMatch}>{target}</p>
+      <h1 className={match ? styles.match : styles.noMatch}>{target}</h1>
       <input
         type="text"
         value={inputWord}
@@ -55,7 +55,7 @@ export default function GameWord() {
             : `${typeCount} keystrokes.`}
         </p>
       ) : (
-        ""
+        <br />
       )}
     </div>
   );
