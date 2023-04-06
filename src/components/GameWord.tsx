@@ -40,7 +40,6 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
 
   return (
     <div className={styles.game}>
-      <button onClick={resetGame}>RESET</button>
       <Timer start={startTimer} complete={complete} />
       <div className={styles.wordHolder}>
         {wordArray.map((char: string, i) => (
@@ -77,6 +76,10 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
       ) : (
         <br />
       )}
+      <span className={styles.gameTools}>
+        <button onClick={resetGame}>NEW WORD</button>
+        <button onClick={resetGame}>RESET WORD</button>
+      </span>
     </div>
   );
 };

@@ -49,12 +49,45 @@
   color: var(--guess-wrong);
 }
 
-.match {
+.match,
+.game p {
   color: var(--guess-correct);
+}
+
+.gameTools {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+
+.gameTools button {
+  width: 140px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 1rem;
+  border: 1px solid var(--primary-main);
+  color: var(--primary-light);
+  background: none;
+  transition: 0.2s;
+}
+
+.gameTools button:hover {
+  cursor: pointer;
+  border: 1px solid var(--secondary-main);
+  color: var(--secondary-light);
+  letter-spacing: 2px;
+  transition: 0.2s;
+}
+
+.gameTools button:active {
+  border: none;
 }
 
 @media screen and (max-width: 800px) {
   .game {
     width: 90%;
+    padding-top: 2rem;
   }
 }
