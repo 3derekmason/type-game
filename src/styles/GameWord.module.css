@@ -8,6 +8,26 @@
   color: var(--primary-light);
 }
 
+.game h1 {
+  width: 100%;
+  text-align: center;
+  font-size: clamp(3rem, 100%, 6rem);
+}
+
+.game input {
+  width: 100%;
+  text-align: center;
+  height: 3rem;
+  border: 1px solid var(--primary-light);
+  background: none;
+  color: var(--secondary-light);
+}
+
+.game input:focus {
+  border: 2px solid var(--secondary-main);
+  outline: none;
+}
+
 .noMatch {
   color: var(--guess-none);
 }
