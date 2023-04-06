@@ -14,6 +14,8 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
   const [startTimer, setStartTimer] = useState<boolean>(false);
   const [complete, setComplete] = useState<boolean>(false);
 
+  const wordArray: string[] = targetWord.split("");
+
   const handleInput = async (e: any) => {
     setTypeCount(typeCount + 1);
     setInputWord(e.target.value);
@@ -40,7 +42,22 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
     <div className={styles.game}>
       <button onClick={resetGame}>RESET</button>
       <Timer start={startTimer} complete={complete} />
-      <h1 className={match ? styles.match : styles.noMatch}>{targetWord}</h1>
+      <div className={styles.wordHolder}>
+        {wordArray.map((char: string, i) => (
+          <h1
+            key={i}
+            className={
+              inputWord[i] === wordArray[i]
+                ? styles.match
+                : !inputWord[i]
+                ? styles.noMatch
+                : styles.wrongMatch
+            }
+          >
+            {char}
+          </h1>
+        ))}
+      </div>
       <input
         type="text"
         value={inputWord}
@@ -48,11 +65,12 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
         onFocus={() => {
           setStartTimer(true);
         }}
+        className={match ? styles.inputMatch : ""}
       />
       {match ? (
         <p>
           You did it! in{" "}
-          {typeCount === targetWord.split("").length
+          {typeCount === wordArray.length
             ? `a perfect ${typeCount} keystrokes!`
             : `${typeCount} keystrokes.`}
         </p>

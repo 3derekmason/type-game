@@ -8,28 +8,45 @@
   color: var(--primary-light);
 }
 
-.game h1 {
+.wordHolder {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game h1 {
+  font-size: clamp(2rem, 100%, 4rem);
+  min-width: 12px;
   text-align: center;
-  font-size: clamp(3rem, 100%, 6rem);
 }
 
 .game input {
-  width: 100%;
+  width: 90%;
   text-align: center;
   height: 3rem;
-  border: 1px solid var(--primary-light);
+  border: transparent;
+  border-bottom: 1px solid var(--primary-light);
   background: none;
-  color: var(--secondary-light);
+  color: transparent;
+  transform: translateY(-100%);
 }
 
 .game input:focus {
-  border: 2px solid var(--secondary-main);
+  border-bottom: 2px solid var(--guess-wrong);
   outline: none;
+}
+
+.game input.inputMatch {
+  border-bottom: 2px solid var(--guess-correct);
 }
 
 .noMatch {
   color: var(--guess-none);
+}
+
+.wrongMatch {
+  color: var(--guess-wrong);
 }
 
 .match {
