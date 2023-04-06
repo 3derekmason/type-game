@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  color: var(--secondary-light);
+  color: var(--primary-light);
 }
 
 .noMatch {

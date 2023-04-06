@@ -15,7 +15,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <AppBar />
-        <GameWord />
+        <GameWord targetWord="type game" />
       </main>
     </>
   );

@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from "../styles/GameWord.module.css";
 
 import Timer from "./Timer";
 
-export default function GameWord() {
+interface GameWordProps {
+  targetWord: string;
+}
+
+const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
   const [inputWord, setInputWord] = useState<string>("");
   const [match, setMatch] = useState<boolean>(false);
   const [typeCount, setTypeCount] = useState<number>(0);
   const [startTimer, setStartTimer] = useState<boolean>(false);
   const [complete, setComplete] = useState<boolean>(false);
-
-  const target: string = "type game";
 
   const handleInput = async (e: any) => {
     setTypeCount(typeCount + 1);
@@ -26,19 +28,19 @@ export default function GameWord() {
   };
 
   useEffect(() => {
-    if (inputWord === target) {
+    if (inputWord === targetWord) {
       setMatch(true);
       setComplete(true);
     } else {
       setMatch(false);
     }
-  }, [inputWord]);
+  }, [inputWord, targetWord]);
 
   return (
     <div className={styles.game}>
       <button onClick={resetGame}>RESET</button>
       <Timer start={startTimer} complete={complete} />
-      <h1 className={match ? styles.match : styles.noMatch}>{target}</h1>
+      <h1 className={match ? styles.match : styles.noMatch}>{targetWord}</h1>
       <input
         type="text"
         value={inputWord}
@@ -50,7 +52,7 @@ export default function GameWord() {
       {match ? (
         <p>
           You did it! in{" "}
-          {typeCount === target.split("").length
+          {typeCount === targetWord.split("").length
             ? `a perfect ${typeCount} keystrokes!`
             : `${typeCount} keystrokes.`}
         </p>
@@ -59,4 +61,5 @@ export default function GameWord() {
       )}
     </div>
   );
-}
+};
+export default GameWord;
