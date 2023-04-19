@@ -3,16 +3,16 @@ import { useRouter } from "next/router";
 const AppContext = createContext();
 
 export function AppWrapper({ children }) {
-  const [currentAdmin, setCurrentAdmin] = useState();
+  const [currentUser, setCurrentUser] = useState();
   const router = useRouter();
 
   const logout = () => {
-    setCurrentAdmin(null);
+    setCurrentUser(null);
   };
 
   let sharedState = {
-    currentAdmin,
-    setCurrentAdmin,
+    currentUser,
+    setCurrentUser,
     router,
     logout,
   };

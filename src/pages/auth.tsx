@@ -6,10 +6,31 @@ import { useState } from "react";
 import AppBar from "../components/AppBar";
 
 const AuthPage = () => {
-  const { setCurrentAdmin, router } = useAppContext();
+  const { setCurrentUser, router } = useAppContext();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [signup, setSignup] = useState<boolean>(true);
+
+  const onSubmit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    const userData = {
+      username,
+      password,
+    };
+    const JSONData = JSON.stringify(userData);
+    const endpoint = signup ? "/api/user" : "/api/auth";
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSONData,
+    };
+    const response = await fetch(endpoint, options);
+    const result = await response.json();
+    setCurrentUser(result);
+    router.push("/");
+  };
   return (
     <>
       <Head>
@@ -21,7 +42,7 @@ const AuthPage = () => {
       <AppBar />
       <main className={styles.authPage}>
         <span className={styles.authToggle}>
-          <caption>Sign Up</caption>
+          <p>Sign Up</p>
           <div className={styles.btnHolster}>
             <button
               onClick={() => {
@@ -32,23 +53,55 @@ const AuthPage = () => {
               }
             ></button>
           </div>
-          <caption>Log In</caption>
+          <p>Log In</p>
         </span>
         {signup ? (
           <form>
             <h2>Sign Up</h2>
             <h4>Sign up to track high scores and join the community!</h4>
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Choose Password" />
-            <button className={styles.submitBtn}>Sign Up</button>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
+            <input
+              type="password"
+              placeholder="Choose Password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <button className={styles.submitBtn} onClick={onSubmit}>
+              Sign Up
+            </button>
           </form>
         ) : (
           <form>
             <h2>Log In</h2>
             <h4>Welcome back!</h4>
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <button className={styles.submitBtn}>Log In</button>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <button className={styles.submitBtn} onClick={onSubmit}>
+              Log In
+            </button>
           </form>
         )}
       </main>
