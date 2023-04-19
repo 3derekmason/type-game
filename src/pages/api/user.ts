@@ -42,6 +42,7 @@ async function newUser(req: any, res: any) {
       username: req.body.username,
       password: hashedPassword,
       created: new Date().toISOString(),
+      public: req.body.isPublic,
     };
     // Check if username exists
     const user = await db

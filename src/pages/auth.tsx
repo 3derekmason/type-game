@@ -9,6 +9,7 @@ const AuthPage = () => {
   const { setCurrentUser, router } = useAppContext();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [isPublic, setIsPublic] = useState<boolean>(false);
   const [signup, setSignup] = useState<boolean>(false);
 
   const onSubmit = async (e: { preventDefault: () => void }) => {
@@ -16,6 +17,7 @@ const AuthPage = () => {
     const userData = {
       username,
       password,
+      isPublic,
     };
     const JSONData = JSON.stringify(userData);
     const endpoint = signup ? "/api/user" : "/api/auth";
@@ -75,6 +77,17 @@ const AuthPage = () => {
                 setPassword(e.target.value);
               }}
             />
+            <label htmlFor="togglePublicPosts">
+              Make your highlights public?
+            </label>
+            <input
+              type="checkbox"
+              id="togglePublicPosts"
+              onChange={() => {
+                setIsPublic(!isPublic);
+              }}
+            />
+            {JSON.stringify(isPublic)}
             <button className={styles.submitBtn} onClick={onSubmit}>
               Sign Up
             </button>
