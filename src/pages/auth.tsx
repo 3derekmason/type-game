@@ -77,17 +77,18 @@ const AuthPage = () => {
                 setPassword(e.target.value);
               }}
             />
-            <label htmlFor="togglePublicPosts">
-              Make your highlights public?
-            </label>
-            <input
-              type="checkbox"
-              id="togglePublicPosts"
-              onChange={() => {
-                setIsPublic(!isPublic);
-              }}
-            />
-            {JSON.stringify(isPublic)}
+            <span className={styles.checkbox}>
+              <label htmlFor="togglePublicPosts">
+                Make your high scores public?
+              </label>
+              <input
+                type="checkbox"
+                id="togglePublicPosts"
+                onChange={() => {
+                  setIsPublic(!isPublic);
+                }}
+              />
+            </span>
             <button className={styles.submitBtn} onClick={onSubmit}>
               Sign Up
             </button>

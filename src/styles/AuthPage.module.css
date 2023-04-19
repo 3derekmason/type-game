@@ -62,6 +62,7 @@
 .authPage h4 {
   height: 50px;
   font-weight: 300;
+  font-size: 16px;
   text-align: center;
   color: #fff;
 }
@@ -94,6 +95,22 @@
   border: 1px solid var(--primary-light);
 }
 
+.authPage form label {
+  font-size: 14px;
+}
+
+.authPage input[type="checkbox"] {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  gap: 2em;
+}
 .submitBtn {
   width: 90%;
   height: 3em;
