@@ -1,7 +1,9 @@
 import Link from "next/link";
 import styles from "../styles/AppBar.module.css";
+import { useAppContext } from "../../context/state";
 
 const AppBar = () => {
+  const { currentUser, logout } = useAppContext();
   return (
     <header className={styles.appBar}>
       <Link href="/">
@@ -10,8 +12,12 @@ const AppBar = () => {
 
       <nav>
         <p>About</p>
-        <Link href="/auth">User</Link>
         <p>High Scores</p>
+        {currentUser ? (
+          <button onClick={logout}>Logout</button>
+        ) : (
+          <Link href="/auth">Login / Sign Up</Link>
+        )}
       </nav>
     </header>
   );

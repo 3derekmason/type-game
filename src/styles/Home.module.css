@@ -8,6 +8,10 @@
   min-height: 100vh;
 }
 
+.helloUser {
+  height: 2em;
+  color: #fff;
+}
 @media screen and (max-width: 800px) {
   .main {
     padding-left: 1rem;

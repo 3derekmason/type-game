@@ -9,7 +9,7 @@ const AuthPage = () => {
   const { setCurrentUser, router } = useAppContext();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [signup, setSignup] = useState<boolean>(true);
+  const [signup, setSignup] = useState<boolean>(false);
 
   const onSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();

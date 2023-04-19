@@ -1,10 +1,12 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import { useAppContext } from "../../context/state";
 
 import AppBar from "@/components/AppBar";
 import GameWord from "@/components/GameWord";
 
 export default function Home() {
+  const { currentUser } = useAppContext();
   return (
     <>
       <Head>
@@ -15,6 +17,9 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <AppBar />
+        <div className={styles.helloUser}>
+          {currentUser ? <h2>{currentUser.username}</h2> : ""}
+        </div>
         <GameWord targetWord="difficult word here" />
       </main>
     </>

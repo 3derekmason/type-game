@@ -53,6 +53,7 @@
 }
 
 .authPage h4 {
+  height: 50px;
   font-weight: 300;
   text-align: center;
   color: #fff;

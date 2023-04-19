@@ -57,7 +57,7 @@ async function newUser(req: any, res: any) {
     await db.collection("users").insertOne(newUser);
     // return a message
     return res.status(201).json({
-      message: "Added user data",
+      message: newUser,
       success: true,
     });
   } catch (error: any) {
