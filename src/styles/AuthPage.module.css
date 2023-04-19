@@ -11,6 +11,13 @@
   font-family: var(--font-mono);
 }
 
+.authToggle:has(.toggleBtnLogin) > p:nth-child(3) {
+  color: var(--secondary-light);
+}
+.authToggle:has(.toggleBtnSignup) > p:nth-child(1) {
+  color: var(--primary-light);
+}
+
 .authToggle {
   display: flex;
   align-items: center;
