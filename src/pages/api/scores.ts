@@ -23,6 +23,7 @@ async function addScore(
     body: {
       title: string;
       time: number;
+      count: number;
       userId: string;
     };
   },
@@ -34,11 +35,12 @@ async function addScore(
       userId: req.body.userId,
       title: req.body.title,
       time: req.body.time,
+      count: req.body.count,
       created_at: new Date().toISOString(),
     };
     await db.collection("scores").insertOne(newScore);
     return res.status(201).json({
-      message: `Added episode to db`,
+      message: `Added score to db`,
       success: true,
     });
   } catch (err) {

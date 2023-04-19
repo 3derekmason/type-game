@@ -3,11 +3,16 @@ import styles from "../styles/Timer.module.css";
 interface TimerProps {
   start: boolean;
   complete: boolean;
+  time: number;
+  setTime: any;
 }
 
-const Timer: FC<TimerProps> = ({ start, complete }): JSX.Element => {
-  const [time, setTime] = useState<number>(0);
-
+const Timer: FC<TimerProps> = ({
+  start,
+  complete,
+  time,
+  setTime,
+}): JSX.Element => {
   useEffect(() => {
     if (!start) {
       setTime(0);
@@ -21,7 +26,7 @@ const Timer: FC<TimerProps> = ({ start, complete }): JSX.Element => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [complete, start]);
+  }, [complete, setTime, start]);
 
   return (
     <div className={styles.timer}>
