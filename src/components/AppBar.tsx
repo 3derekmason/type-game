@@ -10,7 +10,7 @@ const AppBar = () => {
 
       <nav>
         <p>About</p>
-        <p>User</p>
+        <Link href="/auth">User</Link>
         <p>High Scores</p>
       </nav>
     </header>

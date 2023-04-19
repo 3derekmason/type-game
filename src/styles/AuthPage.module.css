@@ -1,0 +1,106 @@
+.authPage {
+  width: 100vw;
+  height: calc(100vh - 88px);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  gap: 1em;
+  font-family: var(--font-mono);
+}
+
+.authToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.btnHolster {
+  height: 100%;
+  width: 48px;
+  border-radius: 12px;
+  padding: 1px;
+  box-shadow: 0 0 2px #fff;
+}
+
+.btnHolster button {
+  width: 50%;
+  height: 100%;
+  border: none;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.toggleBtnSignup {
+  transform: translateX(0);
+  transition: 0.2s ease-in-out;
+  background: var(--primary-light);
+}
+.toggleBtnLogin {
+  transform: translateX(100%);
+  transition: 0.2s ease-in-out;
+  background: var(--secondary-light);
+}
+
+.authPage h2 {
+  margin: 8px 0px;
+}
+
+.authPage h4 {
+  font-weight: 300;
+  text-align: center;
+  color: #fff;
+}
+
+.authPage form {
+  padding: 20px 0px;
+  width: 380px;
+  height: 360px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.authPage input {
+  width: 90%;
+  height: 3em;
+  padding: 0px 8px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: var(--primary-dark);
+  color: #fff;
+  font-family: var(--font-mono);
+}
+
+.authPage input:focus {
+  outline: none;
+  border: 1px solid var(--primary-light);
+}
+
+.submitBtn {
+  width: 90%;
+  height: 3em;
+  border-radius: 4px;
+  border: none;
+  text-align: center;
+  background: var(--primary-light);
+  color: #fff;
+  box-shadow: 0 4px var(--primary-main);
+  font-family: var(--font-mono);
+}
+.submitBtn:hover {
+  cursor: pointer;
+}
+.submitBtn:active {
+  box-shadow: none;
+  transform: translateY(4px);
+}
