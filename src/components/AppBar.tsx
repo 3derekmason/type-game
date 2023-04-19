@@ -3,7 +3,7 @@ import styles from "../styles/AppBar.module.css";
 import { useAppContext } from "../../context/state";
 
 const AppBar = () => {
-  const { currentUser, logout } = useAppContext();
+  const { currentUser, logout, router } = useAppContext();
   return (
     <header className={styles.appBar}>
       <Link href="/">
@@ -11,12 +11,14 @@ const AppBar = () => {
       </Link>
 
       <nav>
-        <p>About</p>
-        <p>High Scores</p>
+        <Link href="/about">About</Link>
+        <Link href="/scores">High Scores</Link>
         {currentUser ? (
           <button onClick={logout}>Logout</button>
-        ) : (
+        ) : router.pathname !== "/auth" ? (
           <Link href="/auth">Login / Sign Up</Link>
+        ) : (
+          ""
         )}
       </nav>
     </header>
