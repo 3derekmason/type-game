@@ -1,5 +1,6 @@
 .game {
   width: 50%;
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,6 +18,7 @@
 
 .game h1 {
   font-size: clamp(2rem, 100%, 4rem);
+  font-family: var(--font-mono);
   min-width: 12px;
   text-align: center;
 }
@@ -26,14 +28,14 @@
   text-align: center;
   height: 3rem;
   border: transparent;
-  border-bottom: 1px solid var(--primary-light);
+  border-bottom: 2px solid var(--primary-dark);
   background: none;
   color: transparent;
   transform: translateY(-100%);
 }
 
 .game input:focus {
-  border-bottom: 2px solid var(--guess-wrong);
+  border-bottom: 2px solid var(--secondary-dark);
   outline: none;
 }
 
@@ -63,7 +65,7 @@
 }
 
 .gameTools button {
-  width: 140px;
+  width: 40%;
   height: 40px;
   border-radius: 8px;
   font-size: 1rem;
@@ -75,9 +77,8 @@
 
 .gameTools button:hover {
   cursor: pointer;
-  border: 1px solid var(--secondary-main);
+  border: 1px solid var(--primary-dark);
   color: var(--secondary-light);
-  letter-spacing: 2px;
   transition: 0.2s;
 }
 
