@@ -4,9 +4,25 @@ import { useAppContext } from "../../context/state";
 
 import AppBar from "@/components/AppBar";
 import GameWord from "@/components/GameWord";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const { currentUser } = useAppContext();
+  const [target, setTarget] = useState<string>("type game");
+
+  const getRandomWord = () => {
+    try {
+      fetch("/api/words")
+        .then((res) => res.json())
+        .then((data) => setTarget(data.title));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getRandomWord();
+  }, []);
   return (
     <>
       <Head>
@@ -20,7 +36,7 @@ export default function Home() {
         <div className={styles.helloUser}>
           {currentUser ? <h2>{currentUser.username}</h2> : ""}
         </div>
-        <GameWord targetWord="difficult word here" />
+        <GameWord targetWord={target} getRandomWord={getRandomWord} />
       </main>
     </>
   );

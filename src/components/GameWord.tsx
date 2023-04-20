@@ -6,9 +6,13 @@ import Timer from "./Timer";
 
 interface GameWordProps {
   targetWord: string;
+  getRandomWord: any;
 }
 
-const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
+const GameWord: FC<GameWordProps> = ({
+  targetWord,
+  getRandomWord,
+}): JSX.Element => {
   const { currentUser } = useAppContext();
   const [inputWord, setInputWord] = useState<string>("");
   const [match, setMatch] = useState<boolean>(false);
@@ -122,7 +126,14 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
         <br />
       )}
       <span className={styles.gameTools}>
-        <button onClick={resetGame}>NEW WORD</button>
+        <button
+          onClick={() => {
+            resetGame();
+            getRandomWord();
+          }}
+        >
+          NEW WORD
+        </button>
         <button onClick={resetGame}>RESET WORD</button>
       </span>
     </div>
