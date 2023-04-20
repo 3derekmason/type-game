@@ -129,3 +129,8 @@
   box-shadow: none;
   transform: translateY(4px);
 }
+
+.error {
+  height: 20px;
+  color: var(--guess-none);
+}

@@ -11,6 +11,7 @@ const AuthPage = () => {
   const [password, setPassword] = useState<string>("");
   const [isPublic, setIsPublic] = useState<boolean>(false);
   const [signup, setSignup] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const onSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -28,10 +29,15 @@ const AuthPage = () => {
       },
       body: JSONData,
     };
-    const response = await fetch(endpoint, options);
-    const result = await response.json();
-    setCurrentUser(result);
-    router.push("/");
+    try {
+      const response = await fetch(endpoint, options);
+      const result = await response.json();
+      console.log(result);
+      setCurrentUser(result);
+      router.push("/");
+    } catch (err: any) {
+      setError("Try again");
+    }
   };
   return (
     <>
@@ -118,6 +124,7 @@ const AuthPage = () => {
             </button>
           </form>
         )}
+        <p className={styles.error}>{error}</p>
       </main>
     </>
   );
