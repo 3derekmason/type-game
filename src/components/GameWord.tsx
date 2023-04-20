@@ -27,10 +27,11 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
 
   const postTime = useCallback(async () => {
     const completionData = {
-      time: time.toFixed(2),
+      time: Number(time.toFixed(2)),
       title: targetWord,
       count: typeCount,
-      userId: currentUser?._id,
+      userId: currentUser?._id || 0,
+      username: currentUser?.username || "anon",
       public: currentUser?.public,
     };
     const JSONData = JSON.stringify(completionData);
@@ -45,7 +46,14 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
     const response = await fetch(endpoint, options);
     const result = await response.json();
     console.log(result);
-  }, [currentUser?._id, currentUser?.public, targetWord, time, typeCount]);
+  }, [
+    currentUser?._id,
+    currentUser?.public,
+    currentUser?.username,
+    targetWord,
+    time,
+    typeCount,
+  ]);
 
   const resetGame = () => {
     setTypeCount(0);

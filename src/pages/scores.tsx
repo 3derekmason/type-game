@@ -19,7 +19,7 @@ export default function HighScore() {
     try {
       const response = await fetch(endpoint, options);
       const result = await response.json();
-      setPublicScores(result);
+      setPublicScores(result.sort((a: any, b: any) => a.time - b.time));
     } catch (err: any) {
       console.error(err);
     }
@@ -39,15 +39,28 @@ export default function HighScore() {
       </Head>
       <AppBar />
       <main className={styles.highScorePage}>
-        {publicScores?.map((score: any, i: number) => {
-          return (
-            <div key={i}>
-              <p>{score.title}</p>
-              <p>{score.time}s</p>
-              <p>{score.count}</p>
-            </div>
-          );
-        })}
+        <table className={styles.scoreTable}>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>User</th>
+              <th>Time</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {publicScores?.map((score: any, i: number) => {
+              return (
+                <tr key={i}>
+                  <td>{score.title}</td>
+                  <td>{score.username}</td>
+                  <td>{score.time}s</td>
+                  <td>{score.count}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </main>
     </>
   );

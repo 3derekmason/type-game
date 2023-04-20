@@ -25,6 +25,7 @@ async function addScore(
       time: number;
       count: number;
       userId: string;
+      username: string;
       public: boolean;
     };
   },
@@ -34,6 +35,7 @@ async function addScore(
     let { db } = await connectToDatabase();
     const newScore = {
       userId: req.body.userId,
+      username: req.body.username,
       public: req.body.public,
       title: req.body.title,
       time: req.body.time,
