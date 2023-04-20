@@ -12,7 +12,12 @@ const AppBar = () => {
 
       <nav>
         <Link href="/about">About</Link>
-        <Link href="/scores">High Scores</Link>
+        {router.pathname !== "/scores" ? (
+          <Link href="/scores">High Scores</Link>
+        ) : (
+          ""
+        )}
+
         {currentUser ? (
           <button onClick={logout}>Logout</button>
         ) : router.pathname !== "/auth" ? (

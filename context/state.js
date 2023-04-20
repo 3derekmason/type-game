@@ -8,6 +8,7 @@ export function AppWrapper({ children }) {
 
   const logout = () => {
     setCurrentUser(null);
+    router.push("/auth");
   };
 
   let sharedState = {
