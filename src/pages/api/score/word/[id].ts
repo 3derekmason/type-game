@@ -1,15 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { connectToDatabase } from "../../../../lib/db";
+import { connectToDatabase } from "../../../../../lib/db";
 import { ObjectId } from "mongodb";
 
-async function getUserScores(req: any, res: any) {
+async function getWordScores(req: any, res: any) {
   try {
     let { db } = await connectToDatabase();
-    const userScores = await db
+    const wordScores = await db
       .collection("scores")
-      .find({ _id: new ObjectId(req.body.userId) })
+      .find({ title: req.body.title })
       .toArray();
-    res.status(201).json(userScores);
+    res.status(201).json(wordScores);
   } catch (error: any) {
     return res.status(400).json({
       message: new Error(error).message,
@@ -25,7 +25,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
   switch (req.method) {
     case "GET": {
-      return getUserScores(req, res);
+      return getWordScores(req, res);
     }
   }
 }
