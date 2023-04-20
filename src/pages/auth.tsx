@@ -15,6 +15,9 @@ const AuthPage = () => {
 
   const onSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    if (!username || !password) {
+      return;
+    }
     const userData = {
       username,
       password,
@@ -32,11 +35,10 @@ const AuthPage = () => {
     try {
       const response = await fetch(endpoint, options);
       const result = await response.json();
-      console.log(result);
       setCurrentUser(result);
       router.push("/");
     } catch (err: any) {
-      setError("Try again");
+      setError(err);
     }
   };
   return (
@@ -55,6 +57,7 @@ const AuthPage = () => {
             <button
               onClick={() => {
                 setSignup(!signup);
+                setError("");
               }}
               className={
                 signup ? styles.toggleBtnSignup : styles.toggleBtnLogin
