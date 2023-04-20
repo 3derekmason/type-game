@@ -4,15 +4,60 @@
   color: #fff;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 
 .scoreTable {
-  width: 90%;
-  height: 90%;
-  overflow-y: scroll;
+  border: 1px solid #ffffff20;
+  border-radius: 8px;
+  padding: 8px;
+  width: 70%;
   text-align: left;
+  display: block;
+}
+
+.scoreTable thead {
+  height: 34px;
+}
+
+.scoreTable .scoreTableBody {
+  height: calc(100% - 40px);
+  overflow: auto;
+  color: #dcdcdc;
+  display: block;
 }
 
 .scoreTable td {
   font-family: var(--font-mono);
+  height: 32px;
+}
+
+.scoreTable tr,
+.scoreTable thead {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.2s;
+  padding: 0px 4px;
+}
+
+.scoreTable td:first-child,
+.scoreTable th:first-child {
+  width: 70%;
+}
+
+.scoreTable td:not(:first-child),
+.scoreTable th:not(:first-child) {
+  width: 7.5%;
+  text-align: center;
+}
+
+.scoreTable td:nth-child(2),
+.scoreTable th:nth-child(2) {
+  width: 15%;
+}
+
+.scoreTable tr:hover {
+  background: #ffffff20;
+  transition: 0.2s;
 }
