@@ -31,6 +31,7 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
       title: targetWord,
       count: typeCount,
       userId: currentUser?._id,
+      public: currentUser?.public,
     };
     const JSONData = JSON.stringify(completionData);
     const endpoint = "/api/scores";
@@ -44,7 +45,7 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
     const response = await fetch(endpoint, options);
     const result = await response.json();
     console.log(result);
-  }, [currentUser?._id, targetWord, time, typeCount]);
+  }, [currentUser?._id, currentUser?.public, targetWord, time, typeCount]);
 
   const resetGame = () => {
     setTypeCount(0);
