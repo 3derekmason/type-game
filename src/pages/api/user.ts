@@ -2,28 +2,6 @@ import { connectToDatabase } from "../../../lib/db";
 import { ObjectId } from "mongodb";
 import { hash } from "../../../lib/hash";
 
-async function checkForUser(req: any, res: any) {
-  try {
-    let { db } = await connectToDatabase();
-    const user = await db.collection("users").find({}).toArray();
-    if (user.length > 0) {
-      return res.status(200).json({
-        message: "User exists",
-        success: true,
-      });
-    }
-    return res.status(200).json({
-      message: "No user found",
-      success: false,
-    });
-  } catch (error: any) {
-    return res.status(400).json({
-      message: new Error(error).message,
-      success: false,
-    });
-  }
-}
-
 async function newUser(req: any, res: any) {
   let hashedPassword;
 
@@ -57,10 +35,7 @@ async function newUser(req: any, res: any) {
     // Add new user to db with hashed password
     await db.collection("users").insertOne(newUser);
     // return a message
-    return res.status(201).json({
-      message: newUser,
-      success: true,
-    });
+    return res.status(201).json(newUser);
   } catch (error: any) {
     return res.status(400).json({
       message: new Error(error).message,
@@ -92,9 +67,6 @@ export default async function handler(req: any, res: any) {
   switch (req.method) {
     case "POST": {
       return newUser(req, res);
-    }
-    case "GET": {
-      return checkForUser(req, res);
     }
     case "DELETE": {
       return deleteUser(req, res);
