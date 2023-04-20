@@ -44,16 +44,22 @@ export default function HighScore() {
             <th></th>
             <th>User</th>
             <th>Time</th>
-            <th>Count</th>
+            <th>Count / Min</th>
           </thead>
           <tbody className={styles.scoreTableBody}>
             {publicScores?.map((score: any, i: number) => {
               return (
                 <tr key={i}>
                   <td>{score.title}</td>
-                  <td>{score.username}</td>
+                  <td className={styles.scoreUser}>{score.username}</td>
                   <td>{score.time}s</td>
-                  <td>{score.count}</td>
+                  <td
+                    className={
+                      score.count === score.title.length ? styles.perfect : ""
+                    }
+                  >
+                    {score.count} / {score.title.length}
+                  </td>
                 </tr>
               );
             })}

@@ -8,7 +8,7 @@
 }
 
 .scoreTable {
-  border: 1px solid #ffffff20;
+  border: none;
   border-radius: 8px;
   padding: 8px;
   width: 70%;
@@ -43,21 +43,25 @@
 
 .scoreTable td:first-child,
 .scoreTable th:first-child {
-  width: 70%;
+  width: 60%;
+  text-align: right;
 }
 
 .scoreTable td:not(:first-child),
 .scoreTable th:not(:first-child) {
-  width: 7.5%;
+  width: calc(40% / 3);
   text-align: center;
-}
-
-.scoreTable td:nth-child(2),
-.scoreTable th:nth-child(2) {
-  width: 15%;
 }
 
 .scoreTable tr:hover {
   background: #ffffff20;
   transition: 0.2s;
+}
+
+.perfect {
+  color: var(--guess-correct);
+}
+
+.scoreUser {
+  color: var(--primary-light);
 }
