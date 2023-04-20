@@ -100,6 +100,7 @@ const GameWord: FC<GameWordProps> = ({ targetWord }): JSX.Element => {
           setStartTimer(true);
         }}
         className={match ? styles.inputMatch : ""}
+        disabled={posted}
       />
       {match ? (
         <p>
