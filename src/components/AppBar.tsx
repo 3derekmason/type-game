@@ -19,7 +19,13 @@ const AppBar = () => {
         )}
 
         {currentUser ? (
-          <button onClick={logout}>Logout</button>
+          <>
+            <Link href="/user">
+              {currentUser.username[0].toUpperCase() +
+                currentUser.username.slice(1)}
+            </Link>
+            <button onClick={logout}>Logout</button>
+          </>
         ) : router.pathname !== "/auth" ? (
           <Link href="/auth">Login / Sign Up</Link>
         ) : (
