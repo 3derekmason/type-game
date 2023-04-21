@@ -41,10 +41,12 @@ export default function HighScore() {
       <main className={styles.highScorePage}>
         <table className={styles.scoreTable}>
           <thead>
-            <th></th>
-            <th>User</th>
-            <th>Time</th>
-            <th>Count / Min</th>
+            <tr>
+              <th></th>
+              <th>User</th>
+              <th>Time</th>
+              <th>Count / Min</th>
+            </tr>
           </thead>
           <tbody className={styles.scoreTableBody}>
             {publicScores?.map((score: any, i: number) => {
