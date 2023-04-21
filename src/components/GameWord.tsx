@@ -1,4 +1,6 @@
 import { FC, useEffect, useState, useCallback } from "react";
+import Image from "next/image";
+
 import styles from "../styles/GameWord.module.css";
 import { useAppContext } from "../../context/state";
 
@@ -132,9 +134,11 @@ const GameWord: FC<GameWordProps> = ({
             getRandomWord();
           }}
         >
-          NEW WORD
+          <Image src="/shuffle.svg" width={30} height={30} alt="shuffle" />
         </button>
-        <button onClick={resetGame}>RESET WORD</button>
+        <button onClick={resetGame}>
+          <Image src="/refresh.svg" width={30} height={30} alt="reset" />
+        </button>
       </span>
     </div>
   );
