@@ -3,14 +3,14 @@ import styles from "@/styles/Home.module.css";
 import { useAppContext } from "../../context/state";
 
 import AppBar from "@/components/AppBar";
-import GameWord from "@/components/GameWord";
+import GameTarget from "@/components/GameTarget";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const { currentUser } = useAppContext();
   const [target, setTarget] = useState<string>("type game");
 
-  const getRandomWord = () => {
+  const getRandomTarget = () => {
     try {
       fetch("/api/words")
         .then((res) => res.json())
@@ -21,7 +21,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    getRandomWord();
+    getRandomTarget();
   }, []);
   return (
     <>
@@ -36,7 +36,7 @@ export default function Home() {
         <div className={styles.helloUser}>
           {currentUser ? <h2>{currentUser.username}</h2> : ""}
         </div>
-        <GameWord targetWord={target} getRandomWord={getRandomWord} />
+        <GameTarget target={target} getRandomTarget={getRandomTarget} />
       </main>
     </>
   );

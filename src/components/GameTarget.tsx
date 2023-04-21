@@ -1,22 +1,22 @@
 import { FC, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 
-import styles from "../styles/GameWord.module.css";
+import styles from "../styles/GameTarget.module.css";
 import { useAppContext } from "../../context/state";
 
 import Timer from "./Timer";
 
-interface GameWordProps {
-  targetWord: string;
-  getRandomWord: any;
+interface GameTargetProps {
+  target: string;
+  getRandomTarget: any;
 }
 
-const GameWord: FC<GameWordProps> = ({
-  targetWord,
-  getRandomWord,
+const GameWord: FC<GameTargetProps> = ({
+  target,
+  getRandomTarget,
 }): JSX.Element => {
   const { currentUser } = useAppContext();
-  const [inputWord, setInputWord] = useState<string>("");
+  const [inputTarget, setInputTarget] = useState<string>("");
   const [targetScores, setTargetScores] = useState<any>([]);
   const [match, setMatch] = useState<boolean>(false);
   const [typeCount, setTypeCount] = useState<number>(0);
@@ -25,17 +25,17 @@ const GameWord: FC<GameWordProps> = ({
   const [complete, setComplete] = useState<boolean>(false);
   const [posted, setPosted] = useState<boolean>(false);
 
-  const wordArray: string[] = targetWord.split("");
+  const targetArray: string[] = target.split("");
 
   const handleInput = async (e: any) => {
     setTypeCount(typeCount + 1);
-    setInputWord(e.target.value);
+    setInputTarget(e.target.value);
   };
 
   const postTime = useCallback(async () => {
     const completionData = {
       time: Number(time.toFixed(2)),
-      title: targetWord,
+      title: target,
       count: typeCount,
       userId: currentUser?._id || 0,
       username: currentUser?.username || "anon",
@@ -57,20 +57,20 @@ const GameWord: FC<GameWordProps> = ({
     currentUser?._id,
     currentUser?.public,
     currentUser?.username,
-    targetWord,
+    target,
     time,
     typeCount,
   ]);
 
   const getScoresForTarget = useCallback(() => {
     try {
-      fetch(`/api/score/target/${targetWord}`)
+      fetch(`/api/score/target/${target}`)
         .then((res) => res.json())
         .then((data) => setTargetScores(data));
     } catch (err) {
       console.error(err);
     }
-  }, [targetWord]);
+  }, [target]);
 
   const resetGame = () => {
     setTypeCount(0);
@@ -78,11 +78,11 @@ const GameWord: FC<GameWordProps> = ({
     setMatch(false);
     setComplete(false);
     setPosted(false);
-    setInputWord("");
+    setInputTarget("");
   };
 
   useEffect(() => {
-    if (inputWord === targetWord) {
+    if (inputTarget === target) {
       setMatch(true);
       setComplete(true);
       if (!posted) {
@@ -92,7 +92,7 @@ const GameWord: FC<GameWordProps> = ({
     } else {
       setMatch(false);
     }
-  }, [inputWord, postTime, posted, targetWord]);
+  }, [inputTarget, postTime, posted, target]);
 
   useEffect(() => {
     getScoresForTarget();
@@ -107,13 +107,13 @@ const GameWord: FC<GameWordProps> = ({
         setTime={setTime}
       />
       <div className={styles.wordHolder}>
-        {wordArray.map((char: string, i) => (
+        {targetArray.map((char: string, i) => (
           <h1
             key={i}
             className={
-              inputWord[i] === wordArray[i]
+              inputTarget[i] === targetArray[i]
                 ? styles.match
-                : !inputWord[i]
+                : !inputTarget[i]
                 ? styles.noMatch
                 : styles.wrongMatch
             }
@@ -124,7 +124,7 @@ const GameWord: FC<GameWordProps> = ({
       </div>
       <input
         type="text"
-        value={inputWord}
+        value={inputTarget}
         onChange={handleInput}
         onFocus={() => {
           setStartTimer(true);
@@ -135,7 +135,7 @@ const GameWord: FC<GameWordProps> = ({
       {match ? (
         <p>
           You did it! in{" "}
-          {typeCount === wordArray.length
+          {typeCount === targetArray.length
             ? `a perfect ${typeCount} keystrokes!`
             : `${typeCount} keystrokes.`}
         </p>
@@ -146,7 +146,7 @@ const GameWord: FC<GameWordProps> = ({
         <button
           onClick={() => {
             resetGame();
-            getRandomWord();
+            getRandomTarget();
           }}
         >
           <Image src="/shuffle.svg" width={30} height={30} alt="shuffle" />
