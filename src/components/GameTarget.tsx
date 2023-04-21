@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import styles from "../styles/GameTarget.module.css";
 import { useAppContext } from "../../context/state";
+import Score from "@/interface/Score";
 
 import Timer from "./Timer";
 
@@ -156,7 +157,7 @@ const GameWord: FC<GameTargetProps> = ({
         </button>
       </span>
       <div className={styles.scoresForTarget}>
-        {targetScores.map((score: any, i: number) => (
+        {targetScores.map((score: Score, i: number) => (
           <span className={styles.highScore} key={i}>
             <p>{i + 1}</p>
             <p>{score.username}</p>

@@ -1,15 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { connectToDatabase } from "../../../lib/db";
 import { ObjectId } from "mongodb";
-
-interface Score {
-  title: string;
-  time: number;
-  count: number;
-  userId: string;
-  username: string;
-  public: boolean;
-}
+import Score from "../../interface/Score";
 
 async function getPublicScores(req: any, res: any) {
   try {

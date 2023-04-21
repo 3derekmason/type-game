@@ -1,18 +1,10 @@
 import Head from "next/head";
 import styles from "@/styles/HighScore.module.css";
 import { useAppContext } from "../../context/state";
+import Score from "@/interface/Score";
 
 import AppBar from "@/components/AppBar";
 import { useEffect, useState } from "react";
-
-interface Score {
-  title: string;
-  time: number;
-  count: number;
-  userId: string;
-  username: string;
-  public: boolean;
-}
 
 export default function HighScore() {
   const { currentUser } = useAppContext();
