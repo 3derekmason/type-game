@@ -17,6 +17,7 @@ const GameWord: FC<GameWordProps> = ({
 }): JSX.Element => {
   const { currentUser } = useAppContext();
   const [inputWord, setInputWord] = useState<string>("");
+  const [targetScores, setTargetScores] = useState<any>([]);
   const [match, setMatch] = useState<boolean>(false);
   const [typeCount, setTypeCount] = useState<number>(0);
   const [startTimer, setStartTimer] = useState<boolean>(false);
@@ -61,6 +62,16 @@ const GameWord: FC<GameWordProps> = ({
     typeCount,
   ]);
 
+  const getScoresForTarget = useCallback(() => {
+    try {
+      fetch(`/api/score/target/${targetWord}`)
+        .then((res) => res.json())
+        .then((data) => setTargetScores(data));
+    } catch (err) {
+      console.error(err);
+    }
+  }, [targetWord]);
+
   const resetGame = () => {
     setTypeCount(0);
     setStartTimer(false);
@@ -82,6 +93,10 @@ const GameWord: FC<GameWordProps> = ({
       setMatch(false);
     }
   }, [inputWord, postTime, posted, targetWord]);
+
+  useEffect(() => {
+    getScoresForTarget();
+  }, [getScoresForTarget]);
 
   return (
     <div className={styles.game}>
@@ -140,6 +155,15 @@ const GameWord: FC<GameWordProps> = ({
           <Image src="/refresh.svg" width={30} height={30} alt="reset" />
         </button>
       </span>
+      <div className={styles.scoresForTarget}>
+        {targetScores.map((score: any, i: number) => (
+          <span className={styles.highScore} key={i}>
+            <p>{i + 1}</p>
+            <p>{score.username}</p>
+            <p>{score.time} seconds</p>
+          </span>
+        ))}
+      </div>
     </div>
   );
 };

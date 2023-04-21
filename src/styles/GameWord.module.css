@@ -91,6 +91,32 @@
     brightness(106%) contrast(106%);
 }
 
+.scoresForTarget {
+  margin-top: 40px;
+  padding: 8px;
+  width: 50%;
+  height: 48px;
+  overflow: auto;
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+.scoresForTarget:hover {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+.scoresForTarget p {
+  color: var(--secondary-light);
+}
+
+.highScore {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media screen and (max-width: 800px) {
   .game {
     width: 90%;
