@@ -104,6 +104,13 @@
   height: 1.5em;
 }
 
+input.invalidP:focus {
+  border: 2px solid var(--guess-wrong);
+}
+input.validP:focus {
+  border: 2px solid var(--guess-correct);
+}
+
 .checkbox {
   display: flex;
   justify-content: center;

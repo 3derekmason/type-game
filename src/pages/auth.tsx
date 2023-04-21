@@ -18,6 +18,10 @@ const AuthPage = () => {
     if (!username || !password) {
       return;
     }
+    if (password.length < 6) {
+      alert("Password must be 6 or more characters.");
+      return;
+    }
     const userData = {
       username,
       password,
@@ -80,11 +84,13 @@ const AuthPage = () => {
             />
             <input
               type="password"
-              placeholder="Choose Password"
+              minLength={6}
+              placeholder="Choose Password (6+)"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+              className={password.length >= 6 ? styles.validP : styles.invalidP}
             />
             <span className={styles.checkbox}>
               <label htmlFor="togglePublicPosts">

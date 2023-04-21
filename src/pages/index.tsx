@@ -33,9 +33,6 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <AppBar />
-        <div className={styles.helloUser}>
-          {currentUser ? <h2>{currentUser.username}</h2> : ""}
-        </div>
         <GameTarget target={target} getRandomTarget={getRandomTarget} />
       </main>
     </>
