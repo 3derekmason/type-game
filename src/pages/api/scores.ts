@@ -2,6 +2,15 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { connectToDatabase } from "../../../lib/db";
 import { ObjectId } from "mongodb";
 
+interface Score {
+  title: string;
+  time: number;
+  count: number;
+  userId: string;
+  username: string;
+  public: boolean;
+}
+
 async function getPublicScores(req: any, res: any) {
   try {
     let { db } = await connectToDatabase();
@@ -20,14 +29,7 @@ async function getPublicScores(req: any, res: any) {
 
 async function addScore(
   req: {
-    body: {
-      title: string;
-      time: number;
-      count: number;
-      userId: string;
-      username: string;
-      public: boolean;
-    };
+    body: Score;
   },
   res: any
 ) {

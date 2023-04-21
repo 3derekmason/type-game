@@ -5,6 +5,15 @@ import { useAppContext } from "../../context/state";
 import AppBar from "@/components/AppBar";
 import { useEffect, useState } from "react";
 
+interface Score {
+  title: string;
+  time: number;
+  count: number;
+  userId: string;
+  username: string;
+  public: boolean;
+}
+
 export default function HighScore() {
   const { currentUser } = useAppContext();
   const [publicScores, setPublicScores] = useState<any>();
@@ -49,7 +58,7 @@ export default function HighScore() {
             </tr>
           </thead>
           <tbody className={styles.scoreTableBody}>
-            {publicScores?.map((score: any, i: number) => {
+            {publicScores?.map((score: Score, i: number) => {
               return (
                 <tr key={i}>
                   <td>{score.title}</td>
