@@ -62,7 +62,15 @@ export default function HighScore() {
               return (
                 <tr key={i}>
                   <td>{score.title}</td>
-                  <td className={styles.scoreUser}>{score.username}</td>
+                  <td
+                    className={
+                      score.username === currentUser?.username
+                        ? styles.currentUserScore
+                        : styles.scoreUser
+                    }
+                  >
+                    {score.username}
+                  </td>
                   <td>{score.time}s</td>
                   <td
                     className={

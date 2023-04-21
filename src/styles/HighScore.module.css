@@ -43,13 +43,19 @@
 
 .scoreTable td:first-child,
 .scoreTable th:first-child {
-  width: 60%;
+  width: 55%;
   text-align: right;
 }
 
 .scoreTable td:not(:first-child),
 .scoreTable th:not(:first-child) {
-  width: calc(40% / 3);
+  width: calc(25% / 2);
+  text-align: center;
+}
+
+.scoreTable td:nth-child(2),
+.scoreTable th:nth-child(2) {
+  width: 20%;
   text-align: center;
 }
 
@@ -64,4 +70,9 @@
 
 .scoreUser {
   color: var(--primary-light);
+}
+
+.currentUserScore {
+  color: var(--secondary-light);
+  letter-spacing: 2px;
 }
