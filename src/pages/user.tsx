@@ -1,19 +1,39 @@
 import Head from "next/head";
 // import styles from "@/styles/Home.module.css";
 import { useAppContext } from "../../context/state";
+import Score from "@/interface/Score";
 
 import AppBar from "@/components/AppBar";
 import { useEffect, useState } from "react";
 
 export default function User() {
-  const { currentUser } = useAppContext();
+  const { currentUser, router } = useAppContext();
+  const [userScores, setUserScores] = useState<Score[]>([]);
+  const [perfectScores, setPerfectScores] = useState<number>();
 
   const getUserScores = () => {
     try {
+      fetch(`/api/score/user/${currentUser._id}`)
+        .then((res) => res.json())
+        .then((data) => setUserScores(data));
     } catch (err) {
       console.error(err);
     }
+    let perfect = 0;
+    userScores.forEach((score) => {
+      if (score.count === score.title.length) {
+        perfect++;
+      }
+    });
+    setPerfectScores(perfect);
   };
+
+  useEffect(() => {
+    if (!currentUser) {
+      router.push("/auth");
+    }
+    getUserScores();
+  }, []);
 
   return (
     <>
@@ -25,6 +45,10 @@ export default function User() {
       </Head>
       <main>
         <AppBar />
+        <p>{JSON.stringify(userScores)}</p>
+        <p>
+          Perfect Scores: {perfectScores} / {userScores.length}
+        </p>
       </main>
     </>
   );

@@ -7,8 +7,9 @@ async function getUserScores(req: any, res: any) {
     let { db } = await connectToDatabase();
     const userScores = await db
       .collection("scores")
-      .find({ _id: new ObjectId(req.body.userId) })
+      .find({ userId: req.query.id })
       .toArray();
+    console.log(userScores);
     res.status(201).json(userScores);
   } catch (error: any) {
     return res.status(400).json({
