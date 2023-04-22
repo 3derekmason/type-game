@@ -4,7 +4,7 @@ import { useAppContext } from "../../context/state";
 import Score from "@/interface/Score";
 
 import AppBar from "@/components/AppBar";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 export default function User() {
   const { currentUser, router } = useAppContext();
@@ -28,6 +28,12 @@ export default function User() {
     setPerfectScores(perfect);
   };
 
+  const formatDate = (date: ReactNode) => {
+    const string = JSON.stringify(date).split("T")[0];
+    const dateString = string.slice(1).split("-");
+    return `${dateString[1]}/${dateString[2]}/${dateString[0]}`;
+  };
+
   useEffect(() => {
     if (!currentUser) {
       router.push("/auth");
@@ -43,12 +49,23 @@ export default function User() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <AppBar />
-        <p>{JSON.stringify(userScores)}</p>
+      <AppBar />
+      <main style={{ color: "#ffffff" }}>
         <p>
           Perfect Scores: {perfectScores} / {userScores.length}
         </p>
+        {userScores.map((score, i) => {
+          return (
+            <span key={i}>
+              <p>{score.title}</p>
+              <p>{score.time}s</p>
+              <p>
+                {score.count} / {score.title.length}
+              </p>
+              <p>{formatDate(score.created_at)}</p>
+            </span>
+          );
+        })}
       </main>
     </>
   );

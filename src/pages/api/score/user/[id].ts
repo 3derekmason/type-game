@@ -9,7 +9,6 @@ async function getUserScores(req: any, res: any) {
       .collection("scores")
       .find({ userId: req.query.id })
       .toArray();
-    console.log(userScores);
     res.status(201).json(userScores);
   } catch (error: any) {
     return res.status(400).json({
