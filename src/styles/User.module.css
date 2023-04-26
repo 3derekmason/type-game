@@ -3,3 +3,8 @@
   height: calc(100vh - 80px);
   color: #fff;
 }
+
+.userScores {
+  width: 60%;
+  text-align: center;
+}

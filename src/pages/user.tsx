@@ -60,18 +60,30 @@ export default function User() {
             <p>
               Perfect Scores: {perfectScores} ({perfectPercentage.toFixed(2)}%)
             </p>
-            {userScores.map((score, i) => {
-              return (
-                <span key={i}>
-                  <p>{score.title}</p>
-                  <p>{score.time}s</p>
-                  <p>
-                    {score.count} / {score.title.length}
-                  </p>
-                  <p>{formatDate(score.created_at)}</p>
-                </span>
-              );
-            })}
+            <table className={styles.userScores}>
+              <thead>
+                <tr>
+                  <th>Prase</th>
+                  <th>Time</th>
+                  <th>Count</th>
+                  <th>Date Played</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userScores.map((score, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{score.title}</td>
+                      <td>{score.time}s</td>
+                      <td>
+                        {score.count} / {score.title.length}
+                      </td>
+                      <td>{formatDate(score.created_at)}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </>
         ) : (
           <Loading message="Loading user data" />
