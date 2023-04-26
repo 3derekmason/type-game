@@ -1,9 +1,10 @@
 import Head from "next/head";
-// import styles from "@/styles/Home.module.css";
+import styles from "@/styles/User.module.css";
 import { useAppContext } from "../../context/state";
 import Score from "@/interface/Score";
 
 import AppBar from "@/components/AppBar";
+import Loading from "@/components/Loading";
 import { ReactNode, useEffect, useState } from "react";
 
 export default function User() {
@@ -52,23 +53,29 @@ export default function User() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppBar />
-      <main style={{ color: "#ffffff" }}>
-        <p>Completed: {userScores.length}</p>
-        <p>
-          Perfect Scores: {perfectScores} ({perfectPercentage.toFixed(2)}%)
-        </p>
-        {userScores.map((score, i) => {
-          return (
-            <span key={i}>
-              <p>{score.title}</p>
-              <p>{score.time}s</p>
-              <p>
-                {score.count} / {score.title.length}
-              </p>
-              <p>{formatDate(score.created_at)}</p>
-            </span>
-          );
-        })}
+      <main className={styles.user}>
+        {userScores?.length > 0 ? (
+          <>
+            <p>Completed: {userScores.length}</p>
+            <p>
+              Perfect Scores: {perfectScores} ({perfectPercentage.toFixed(2)}%)
+            </p>
+            {userScores.map((score, i) => {
+              return (
+                <span key={i}>
+                  <p>{score.title}</p>
+                  <p>{score.time}s</p>
+                  <p>
+                    {score.count} / {score.title.length}
+                  </p>
+                  <p>{formatDate(score.created_at)}</p>
+                </span>
+              );
+            })}
+          </>
+        ) : (
+          <Loading message="Loading user data" />
+        )}
       </main>
     </>
   );
