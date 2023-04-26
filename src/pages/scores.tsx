@@ -5,6 +5,7 @@ import Score from "@/interface/Score";
 
 import AppBar from "@/components/AppBar";
 import { useEffect, useState } from "react";
+import Loading from "@/components/Loading";
 
 export default function HighScore() {
   const { currentUser } = useAppContext();
@@ -40,42 +41,46 @@ export default function HighScore() {
       </Head>
       <AppBar />
       <main className={styles.highScorePage}>
-        <table className={styles.scoreTable}>
-          <thead>
-            <tr>
-              <th></th>
-              <th>User</th>
-              <th>Time</th>
-              <th>Count / Min</th>
-            </tr>
-          </thead>
-          <tbody className={styles.scoreTableBody}>
-            {publicScores?.map((score: Score, i: number) => {
-              return (
-                <tr key={i}>
-                  <td>{score.title}</td>
-                  <td
-                    className={
-                      score.username === currentUser?.username
-                        ? styles.currentUserScore
-                        : styles.scoreUser
-                    }
-                  >
-                    {score.username}
-                  </td>
-                  <td>{score.time}s</td>
-                  <td
-                    className={
-                      score.count === score.title.length ? styles.perfect : ""
-                    }
-                  >
-                    {score.count} / {score.title.length}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        {publicScores ? (
+          <table className={styles.scoreTable}>
+            <thead>
+              <tr>
+                <th></th>
+                <th>User</th>
+                <th>Time</th>
+                <th>Count / Min</th>
+              </tr>
+            </thead>
+            <tbody className={styles.scoreTableBody}>
+              {publicScores?.map((score: Score, i: number) => {
+                return (
+                  <tr key={i}>
+                    <td>{score.title}</td>
+                    <td
+                      className={
+                        score.username === currentUser?.username
+                          ? styles.currentUserScore
+                          : styles.scoreUser
+                      }
+                    >
+                      {score.username}
+                    </td>
+                    <td>{score.time}s</td>
+                    <td
+                      className={
+                        score.count === score.title.length ? styles.perfect : ""
+                      }
+                    >
+                      {score.count} / {score.title.length}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : (
+          <Loading message="Loading public scores" />
+        )}
       </main>
     </>
   );
