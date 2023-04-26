@@ -9,7 +9,8 @@ import { ReactNode, useEffect, useState } from "react";
 export default function User() {
   const { currentUser, router } = useAppContext();
   const [userScores, setUserScores] = useState<Score[]>([]);
-  const [perfectScores, setPerfectScores] = useState<number>();
+  const [perfectScores, setPerfectScores] = useState<number>(0);
+  const [perfectPercentage, setPerfectPercentage] = useState<number>(0);
 
   const getUserScores = () => {
     try {
@@ -26,6 +27,7 @@ export default function User() {
       }
     });
     setPerfectScores(perfect);
+    setPerfectPercentage((perfect / userScores.length) * 100);
   };
 
   const formatDate = (date: ReactNode) => {
@@ -51,8 +53,9 @@ export default function User() {
       </Head>
       <AppBar />
       <main style={{ color: "#ffffff" }}>
+        <p>Completed: {userScores.length}</p>
         <p>
-          Perfect Scores: {perfectScores} / {userScores.length}
+          Perfect Scores: {perfectScores} ({perfectPercentage.toFixed(2)}%)
         </p>
         {userScores.map((score, i) => {
           return (
