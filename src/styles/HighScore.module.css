@@ -77,20 +77,25 @@
   letter-spacing: 2px;
 }
 
-.scoreTable thead input {
-  height: 100%;
+.scoreTable th input {
+  height: 24px;
   width: calc(100% - 40px);
   color: #fff;
   font-size: 18px;
   background: transparent;
   border: none;
   border-bottom: 2px solid #ffffff50;
-  transform: translateY(-8px);
 }
 
-.scoreTable thead input:focus {
+.scoreTable th input:focus {
   outline: none;
   border-bottom: 2px solid var(--secondary-light);
+}
+
+.scoreTable th:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchIcon {
