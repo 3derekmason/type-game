@@ -17,7 +17,7 @@
 }
 
 .scoreTable thead {
-  height: 34px;
+  height: 40px;
 }
 
 .scoreTable .scoreTableBody {
@@ -75,4 +75,32 @@
 .currentUserScore {
   color: var(--secondary-light);
   letter-spacing: 2px;
+}
+
+.scoreTable thead input {
+  height: 100%;
+  width: calc(100% - 40px);
+  color: #fff;
+  font-size: 18px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #ffffff50;
+  transform: translateY(-8px);
+}
+
+.scoreTable thead input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--secondary-light);
+}
+
+.searchIcon {
+  display: inline-block;
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMzAiIGhlaWdodD0iMzAiCnZpZXdCb3g9IjAgMCAzMCAzMCI+CjxwYXRoIGQ9Ik0gMTMgMyBDIDcuNDg4OTk3MSAzIDMgNy40ODg5OTcxIDMgMTMgQyAzIDE4LjUxMTAwMyA3LjQ4ODk5NzEgMjMgMTMgMjMgQyAxNS4zOTY1MDggMjMgMTcuNTk3Mzg1IDIyLjE0ODk4NiAxOS4zMjIyNjYgMjAuNzM2MzI4IEwgMjUuMjkyOTY5IDI2LjcwNzAzMSBBIDEuMDAwMSAxLjAwMDEgMCAxIDAgMjYuNzA3MDMxIDI1LjI5Mjk2OSBMIDIwLjczNjMyOCAxOS4zMjIyNjYgQyAyMi4xNDg5ODYgMTcuNTk3Mzg1IDIzIDE1LjM5NjUwOCAyMyAxMyBDIDIzIDcuNDg4OTk3MSAxOC41MTEwMDMgMyAxMyAzIHogTSAxMyA1IEMgMTcuNDMwMTIzIDUgMjEgOC41Njk4Nzc0IDIxIDEzIEMgMjEgMTcuNDMwMTIzIDE3LjQzMDEyMyAyMSAxMyAyMSBDIDguNTY5ODc3NCAyMSA1IDE3LjQzMDEyMyA1IDEzIEMgNSA4LjU2OTg3NzQgOC41Njk4Nzc0IDUgMTMgNSB6Ij48L3BhdGg+Cjwvc3ZnPg==")
+    50% 50% no-repeat;
+  background-size: 100%;
+  filter: invert(92%) sepia(93%) saturate(0%) hue-rotate(202deg)
+    brightness(106%) contrast(106%);
 }

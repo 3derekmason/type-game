@@ -9,7 +9,9 @@ import Loading from "@/components/Loading";
 
 export default function HighScore() {
   const { currentUser } = useAppContext();
-  const [publicScores, setPublicScores] = useState<any>();
+  const [publicScores, setPublicScores] = useState<Score[]>();
+  const [filteredScores, setFilteredScores] = useState<Score[]>();
+  const [searchParam, setSearchParam] = useState<string>("");
   const getPublicScores = async () => {
     const endpoint = "/api/scores";
     const options = {
@@ -22,10 +24,24 @@ export default function HighScore() {
       const response = await fetch(endpoint, options);
       const result = await response.json();
       setPublicScores(result.sort((a: any, b: any) => a.time - b.time));
+      setFilteredScores(result.sort((a: any, b: any) => a.time - b.time));
     } catch (err: any) {
       console.error(err);
     }
   };
+
+  const filterScores = () => {
+    let filter: Score[] = [];
+    publicScores?.forEach((score) => {
+      if (score.title.includes(searchParam) || searchParam === "") {
+        filter.push(score);
+      }
+    });
+    setFilteredScores(filter);
+  };
+  useEffect(() => {
+    filterScores();
+  }, [searchParam]);
 
   useEffect(() => {
     getPublicScores();
@@ -45,14 +61,23 @@ export default function HighScore() {
           <table className={styles.scoreTable}>
             <thead>
               <tr>
-                <th></th>
+                <th>
+                  <div className={styles.searchIcon}></div>
+                  <input
+                    type="text"
+                    value={searchParam}
+                    onChange={(e) => {
+                      setSearchParam(e.target.value);
+                    }}
+                  />
+                </th>
                 <th>User</th>
                 <th>Time</th>
                 <th>Count / Min</th>
               </tr>
             </thead>
             <tbody className={styles.scoreTableBody}>
-              {publicScores?.map((score: Score, i: number) => {
+              {filteredScores?.map((score: Score, i: number) => {
                 return (
                   <tr key={i}>
                     <td>{score.title}</td>
