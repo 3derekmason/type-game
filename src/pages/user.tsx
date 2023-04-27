@@ -17,18 +17,20 @@ export default function User() {
     try {
       fetch(`/api/score/user/${currentUser._id}`)
         .then((res) => res.json())
-        .then((data) => setUserScores(data));
+        .then((data) => {
+          setUserScores(data);
+          let perfect = 0;
+          data.forEach((score: Score) => {
+            if (score.count === score.title.length) {
+              perfect++;
+            }
+          });
+          setPerfectScores(perfect);
+          setPerfectPercentage((perfect / data.length) * 100);
+        });
     } catch (err) {
       console.error(err);
     }
-    let perfect = 0;
-    userScores.forEach((score) => {
-      if (score.count === score.title.length) {
-        perfect++;
-      }
-    });
-    setPerfectScores(perfect);
-    setPerfectPercentage((perfect / userScores.length) * 100);
   };
 
   const formatDate = (date: ReactNode) => {
