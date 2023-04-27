@@ -1,13 +1,11 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import { useAppContext } from "../../context/state";
 
 import AppBar from "@/components/AppBar";
 import GameTarget from "@/components/GameTarget";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const { currentUser } = useAppContext();
   const [target, setTarget] = useState<string>("type game");
 
   const getRandomTarget = () => {
@@ -23,6 +21,7 @@ export default function Home() {
   useEffect(() => {
     getRandomTarget();
   }, []);
+
   return (
     <>
       <Head>
