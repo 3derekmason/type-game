@@ -11,7 +11,7 @@ const AppBar = () => {
       </Link>
 
       <nav>
-        <Link href="/about">About</Link>
+        {router.pathname !== "/about" ? <Link href="/about">About</Link> : ""}
         {router.pathname !== "/scores" ? (
           <Link href="/scores">High Scores</Link>
         ) : (

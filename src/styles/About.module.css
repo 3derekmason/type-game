@@ -1,0 +1,8 @@
+.aboutPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  color: #eee;
+}
