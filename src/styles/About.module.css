@@ -2,7 +2,86 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
   width: 100vw;
   height: calc(100vh - 80px);
+  overflow: hidden;
   color: #eee;
+}
+
+.aboutHead {
+  width: 60%;
+  text-align: left;
+}
+
+.aboutPage h1 {
+  width: 440px;
+  font-size: 24px;
+  color: var(--primary-main);
+}
+
+.aboutPage code {
+  font-size: 44px;
+  letter-spacing: 2px;
+  margin-left: 8px;
+  color: var(--primary-light);
+}
+
+.aboutPage h3 {
+  width: 440px;
+  color: var(--secondary-main);
+  font-size: 28px;
+  overflow: hidden;
+  border-right: 0.15em solid var(--primary-main);
+  white-space: nowrap;
+  letter-spacing: 0.15em;
+  animation: typing 1.2s steps(22, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 440px;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--primary-main);
+  }
+}
+
+.aboutContainer,
+.aboutFooter {
+  background: var(--primary-glass);
+  border: 1px solid var(--primary-dark);
+  border-radius: 16px;
+  animation: appear 2.4s linear;
+}
+
+.aboutContainer {
+  width: 80%;
+  height: 50%;
+  transform: translateX(20%);
+}
+
+.aboutFooter {
+  width: 80%;
+  height: 200px;
+  transform: translate(-20%, 40px);
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

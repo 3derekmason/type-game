@@ -13,7 +13,17 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppBar />
-      <main className={styles.aboutPage}>hello world</main>
+      <main className={styles.aboutPage}>
+        <div className={styles.aboutHead}>
+          <h1>
+            About <code>type game</code>
+          </h1>
+          <h3>How fast can you type?</h3>
+        </div>
+
+        <div className={styles.aboutContainer}></div>
+        <div className={styles.aboutFooter}></div>
+      </main>
     </>
   );
 }
