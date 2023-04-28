@@ -2,9 +2,32 @@
   width: 100vw;
   height: calc(100vh - 80px);
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 .userScores {
-  width: 60%;
+  width: 640px;
   text-align: center;
+  padding: 4px;
+  border: 1px solid #ffffff60;
+  border-radius: 4px;
+}
+
+.userScores tbody td:first-child {
+  text-align: left;
+  padding-left: 4px;
+}
+
+.userScores tr:hover {
+  text-decoration: underline;
+  cursor: default;
+}
+
+.user h2 {
+  background: linear-gradient(115deg, #fff, 80%, var(--secondary-light));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
