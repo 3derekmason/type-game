@@ -47,7 +47,7 @@ export default function About() {
               If you want to learn more about how the game was built, or have
               any feedback or questions, visit the repository
             </p>
-            <Link href="/">here.</Link>
+            <Link href="https://github.com/3derekmason/type-game">here.</Link>
           </span>
         </div>
       </main>
