@@ -28,3 +28,16 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+@media screen and (max-width: 600px) {
+  .appBar h1 {
+    font-size: 20px;
+  }
+  .appBar a,
+  .appBar button {
+    font-size: 12px;
+  }
+  .appBar nav {
+    gap: 8px;
+  }
+}

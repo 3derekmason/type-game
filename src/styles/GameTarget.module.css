@@ -122,4 +122,12 @@
     width: 90%;
     padding-top: 2rem;
   }
+
+  .game h1 {
+    min-width: none;
+  }
+
+  .wordHolder {
+    flex-wrap: wrap;
+  }
 }

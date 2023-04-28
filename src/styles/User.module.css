@@ -31,3 +31,17 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+@media screen and (max-width: 600px) {
+  .userScores {
+    width: 100%;
+    border: none;
+  }
+  .userScores tbody td:first-child {
+    padding-left: 0px;
+  }
+  .userScores td {
+    height: 40px;
+    font-size: 10px;
+  }
+}

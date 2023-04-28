@@ -165,4 +165,7 @@
   .aboutContainer p {
     width: 80%;
   }
+  .aboutFooter p {
+    font-size: 12px;
+  }
 }

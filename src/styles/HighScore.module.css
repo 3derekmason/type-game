@@ -109,3 +109,16 @@
   filter: invert(92%) sepia(93%) saturate(0%) hue-rotate(202deg)
     brightness(106%) contrast(106%);
 }
+
+@media screen and (max-width: 600px) {
+  .scoreTable {
+    width: 100%;
+  }
+  .scoreTable th {
+    font-size: 12px;
+  }
+  .scoreTable td {
+    height: 44px;
+    font-size: 10px;
+  }
+}
