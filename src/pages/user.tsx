@@ -56,7 +56,7 @@ export default function User() {
       </Head>
       <AppBar />
       <main className={styles.user}>
-        <h2>{currentUser.username}</h2>
+        <h2>{currentUser?.username}</h2>
         {userScores?.length > 0 ? (
           <>
             <p>Completed: {userScores.length}</p>
