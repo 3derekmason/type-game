@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 40px;
   width: 100vw;
   height: calc(100vh - 80px);
   overflow: hidden;
@@ -63,18 +63,74 @@
   border: 1px solid var(--primary-dark);
   border-radius: 16px;
   animation: appear 2.4s linear;
+  padding: 16px;
 }
 
 .aboutContainer {
   width: 80%;
   height: 50%;
   transform: translateX(20%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.aboutBtns {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.aboutBtns a {
+  width: 200px;
+  height: 44px;
+  background: var(--primary-main);
+  border: transparent;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  font-family: var(--font-mono);
+  box-shadow: 0 4px 0 var(--primary-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutBtns a:nth-child(2) {
+  background: var(--secondary-main);
+  box-shadow: 0 4px 0 var(--secondary-dark);
+}
+
+.aboutBtns a:hover {
+  text-decoration: none;
+}
+
+.aboutBtns a:active {
+  box-shadow: none;
+  opacity: 1;
+  transform: translateY(4px);
+}
+
+.aboutContainer p {
+  width: 80%;
 }
 
 .aboutFooter {
   width: 80%;
-  height: 200px;
-  transform: translate(-20%, 40px);
+  height: 100px;
+  padding: 0px 40px;
+  transform: translateX(-20%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #ddd;
+}
+
+.aboutFooter a {
+  color: var(--primary-light);
+  font-size: 18px;
 }
 
 @keyframes appear {
@@ -83,5 +139,30 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .aboutPage {
+    gap: 16px;
+  }
+  .aboutHead {
+    width: 90%;
+  }
+  .aboutPage h3 {
+    font-size: 22px;
+  }
+  .aboutContainer {
+    height: 70%;
+  }
+  .aboutBtns {
+    gap: 16px;
+  }
+  .aboutBtns a {
+    width: 120px;
+    font-size: 10px;
+  }
+  .aboutContainer p {
+    width: 80%;
   }
 }

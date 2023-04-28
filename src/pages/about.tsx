@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "@/styles/About.module.css";
 
 import AppBar from "@/components/AppBar";
+import Link from "next/link";
 
 export default function About() {
   return (
@@ -21,8 +22,34 @@ export default function About() {
           <h3>How fast can you type?</h3>
         </div>
 
-        <div className={styles.aboutContainer}></div>
-        <div className={styles.aboutFooter}></div>
+        <div className={styles.aboutContainer}>
+          <p>
+            Welcome to &quot;type game&quot; – a fun and addictive game that
+            challenges your typing skills! In this game, you&apos;ll be given a
+            random phrase to type with the goal to type it as fast and
+            accurately as you can. The game tracks your time and type count for
+            each completed phrase, allowing you to measure and share progress.
+          </p>
+          <p>
+            With the optional sign-in feature, you can also track and share your
+            own high scores with friends and other players. Built with
+            TypeScript, Next.js, and MongoDB, &quot;type game&quot; is fast,
+            responsive, and easy to use.
+          </p>
+          <span className={styles.aboutBtns}>
+            <Link href="/">Play Now!</Link>
+            <Link href="/auth">Sign Up / Log in</Link>
+          </span>
+        </div>
+        <div className={styles.aboutFooter}>
+          <span>
+            <p>
+              If you want to learn more about how the game was built, or have
+              any feedback or questions, visit the repository
+            </p>
+            <Link href="/">here.</Link>
+          </span>
+        </div>
       </main>
     </>
   );
